@@ -1,8 +1,20 @@
 #include "minitalk.h"
 
+int	g_bit_index = 0;
+
 void	handle_signal(int sig)
 {
-	(void)sig;
+	static unsigned char	current_char = 0;
+
+	if (sig == SIGUSR1)
+		current_char |= (1 << g_bit_index);
+	g_bit_index++;
+	if (g_bit_index == 8)
+	{
+		write(1, &current_char, 1);
+		g_bit_index = 0;
+		current_char = 0;
+	}
 }
 
 int	main(void)
