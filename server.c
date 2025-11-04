@@ -11,7 +11,10 @@ void	handle_signal(int sig)
 	g_bit_index++;
 	if (g_bit_index == 8)
 	{
-		write(1, &current_char, 1);
+		if (current_char == '\0')
+			write(1, "\n", 1);
+		else
+			write(1, &current_char, 1);
 		g_bit_index = 0;
 		current_char = 0;
 	}
