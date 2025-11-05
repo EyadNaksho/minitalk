@@ -1,5 +1,21 @@
 #include "minitalk.h"
 
+void	send_char(pid_t server_pid, char c)
+{
+	int	bit;
+
+	bit = 0;
+	while (bit < 8)
+	{
+		if (c & (1 << bit))
+			kill(server_pid, SIGUSR1);
+		else
+			kill(server_pid, SIGUSR2);
+		usleep(100);
+		bit++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	pid_t	server_pid;
