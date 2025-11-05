@@ -31,9 +31,17 @@ int	main(void)
 	write(1, "\n", 1);
 	sa.sa_handler = handle_signal;
 	sigemptyset(&sa.sa_mask);
-	sa.sa_flags = 0;
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
+	sa.sa_flags = SA_RESTART;
+	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+	{
+		write(2, "Error: Failed to set signal handler\n", 37);
+		return (1);
+	}
+	if (sigaction(SIGUSR2, &sa, NULL) == -1)
+	{
+		write(2, "Error: Failed to set signal handler\n", 37);
+		return (1);
+	}
 	while (1)
 		pause();
 	return (0);

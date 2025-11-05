@@ -3,14 +3,20 @@
 void	send_char(pid_t server_pid, char c)
 {
 	int	bit;
+	int	result;
 
 	bit = 0;
 	while (bit < 8)
 	{
 		if (c & (1 << bit))
-			kill(server_pid, SIGUSR1);
+			result = kill(server_pid, SIGUSR1);
 		else
-			kill(server_pid, SIGUSR2);
+			result = kill(server_pid, SIGUSR2);
+		if (result == -1)
+		{
+			write(2, "Error: Failed to send signal\n", 30);
+			exit(1);
+		}
 		usleep(100);
 		bit++;
 	}
