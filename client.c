@@ -16,6 +16,19 @@ void	send_char(pid_t server_pid, char c)
 	}
 }
 
+void	send_message(pid_t server_pid, char *message)
+{
+	int	i;
+
+	i = 0;
+	while (message[i])
+	{
+		send_char(server_pid, message[i]);
+		i++;
+	}
+	send_char(server_pid, '\0');
+}
+
 int	main(int argc, char **argv)
 {
 	pid_t	server_pid;
@@ -32,5 +45,6 @@ int	main(int argc, char **argv)
 		write(2, "Error: Invalid PID\n", 19);
 		return (1);
 	}
+	send_message(server_pid, argv[2]);
 	return (0);
 }
