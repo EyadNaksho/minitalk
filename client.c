@@ -17,7 +17,7 @@ void	send_char(pid_t server_pid, char c)
 			write(2, "Error: Failed to send signal\n", 30);
 			exit(1);
 		}
-		usleep(100);
+		usleep(50);
 		bit++;
 	}
 }
