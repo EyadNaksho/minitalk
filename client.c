@@ -51,6 +51,11 @@ int	main(int argc, char **argv)
 		write(2, "Error: Invalid PID\n", 19);
 		return (1);
 	}
+	if (!argv[2] || !argv[2][0])
+	{
+		write(2, "Error: Empty message\n", 21);
+		return (1);
+	}
 	send_message(server_pid, argv[2]);
 	return (0);
 }
