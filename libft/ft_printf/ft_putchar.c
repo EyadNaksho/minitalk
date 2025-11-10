@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eyadnaksho <eyadnaksho@student.42.fr>      +#+  +:+       +#+        */
+/*   By: eynaksho <eynaksho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 15:31:42 by eyadnaksho        #+#    #+#             */
-/*   Updated: 2025/11/10 15:31:43 by eyadnaksho       ###   ########.fr       */
+/*   Created: 2025/04/02 23:39:22 by eynaksho          #+#    #+#             */
+/*   Updated: 2025/04/29 16:04:34 by eynaksho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "ft_printf.h"
 
-# include "libft/ft_printf/ft_printf.h"
-# include "libft/libft.h"
-# include <signal.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#endif
+int	ft_putchar(int c)
+{
+	if (write(1, &c, 1) < 0)
+		return (-1);
+	return (1);
+}

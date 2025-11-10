@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eyadnaksho <eyadnaksho@student.42.fr>      +#+  +:+       +#+        */
+/*   By: eynaksho <eynaksho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 15:31:42 by eyadnaksho        #+#    #+#             */
-/*   Updated: 2025/11/10 15:31:43 by eyadnaksho       ###   ########.fr       */
+/*   Created: 2025/03/19 19:42:09 by eynaksho          #+#    #+#             */
+/*   Updated: 2025/03/24 21:49:36 by eynaksho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include "libft/ft_printf/ft_printf.h"
-# include "libft/libft.h"
-# include <signal.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#endif
+/// @brief Outputs the string s into file descriptor
+/// @param s The string to output
+/// @param fd File descritor (destination)
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s)
+		write(fd, s++, 1);
+}

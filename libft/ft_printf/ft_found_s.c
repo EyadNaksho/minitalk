@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_found_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eyadnaksho <eyadnaksho@student.42.fr>      +#+  +:+       +#+        */
+/*   By: eynaksho <eynaksho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 15:31:42 by eyadnaksho        #+#    #+#             */
-/*   Updated: 2025/11/10 15:31:43 by eyadnaksho       ###   ########.fr       */
+/*   Created: 2025/04/02 23:49:09 by eynaksho          #+#    #+#             */
+/*   Updated: 2025/04/03 08:21:21 by eynaksho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "ft_printf.h"
 
-# include "libft/ft_printf/ft_printf.h"
-# include "libft/libft.h"
-# include <signal.h>
-# include <stdlib.h>
-# include <unistd.h>
+int	ft_found_s(char *s)
+{
+	int	i;
 
-#endif
+	i = 0;
+	if (!s)
+		s = "(null)";
+	while (*s)
+	{
+		i += ft_putchar(*s);
+		if (i < 0)
+			return (-1);
+		s++;
+	}
+	return (i);
+}
